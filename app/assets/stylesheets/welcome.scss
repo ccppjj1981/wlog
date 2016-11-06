@@ -10,8 +10,10 @@
  body {
     //也可以定义局部变量
     $page_width: 300px;
-
-    background: $primary_color;
+    background-image: url('background.jpg');
+    //background-repeat:no-repeat;
+    //background-position:center;
+    //background: $primary_color;
     #wrapper {
         width: $page_width;
         background: white;
