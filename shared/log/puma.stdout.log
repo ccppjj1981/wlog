@@ -1,0 +1,35 @@
+=== puma startup: 2016-11-13 20:10:07 +0800 ===
+[2207] * Starting control server on unix:///var/folders/xz/fn_vb11x2nb_r0fbsksblk9r0000gn/T/puma-status-1479039007959-2207
+[2207] - Worker 0 (pid: 2209) booted, phase: 0
+[2207] - Gracefully shutting down workers...
+[2207] === puma shutdown: 2016-11-13 21:07:01 +0800 ===
+[2207] - Goodbye!
+Exiting
+=== puma startup: 2016-11-14 23:23:14 +0800 ===
+[1927] * Starting control server on unix:///var/folders/xz/fn_vb11x2nb_r0fbsksblk9r0000gn/T/puma-status-1479136994339-1927
+[1927] - Worker 0 (pid: 1952) booted, phase: 0
+[1927] - Gracefully shutting down workers...
+[1927] === puma shutdown: 2016-11-14 23:24:32 +0800 ===
+[1927] - Goodbye!
+Exiting
+=== puma startup: 2016-11-14 23:24:52 +0800 ===
+[1977] * Starting control server on unix:///var/folders/xz/fn_vb11x2nb_r0fbsksblk9r0000gn/T/puma-status-1479137092766-1977
+[1977] - Worker 0 (pid: 2002) booted, phase: 0
+[1977] - Gracefully shutting down workers...
+[1977] === puma shutdown: 2016-11-14 23:26:29 +0800 ===
+[1977] - Goodbye!
+Exiting
+=== puma startup: 2016-11-14 23:29:50 +0800 ===
+[520] * Starting control server on unix:///var/folders/xz/fn_vb11x2nb_r0fbsksblk9r0000gn/T/puma-status-1479137390838-520
+[520] - Worker 0 (pid: 547) booted, phase: 0
+[520] - Gracefully shutting down workers...
+[520] === puma shutdown: 2016-11-14 23:30:42 +0800 ===
+[520] - Goodbye!
+Exiting
+=== puma startup: 2016-11-14 23:31:58 +0800 ===
+[589] * Starting control server on unix:///var/folders/xz/fn_vb11x2nb_r0fbsksblk9r0000gn/T/puma-status-1479137518179-589
+[589] - Worker 0 (pid: 609) booted, phase: 0
+[589] - Gracefully shutting down workers...
+[589] === puma shutdown: 2016-11-14 23:44:58 +0800 ===
+[589] - Goodbye!
+Exiting

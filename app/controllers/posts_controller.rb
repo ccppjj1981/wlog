@@ -1,12 +1,16 @@
 class PostsController < ApplicationController
-  http_basic_authenticate_with name: "cpj", password: "cpj",
-   except: [:index, :show]
+ 
+  def preview
+    Rails.logger.info("=============preview")
+    render plain: Post.render_html(params[:content] || "")
+  end
 
   def index
     @posts = Post.all
   end
 
   def new
+    Rails.logger.info("=============new")
     @post = Post.new
   end
 

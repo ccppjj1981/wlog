@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     #end
 
 
-  resources :posts do
+  resources :posts , except: [:show] do
+    collection do
+        post :preview
+    end
     resources :comments
   end
 

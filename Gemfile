@@ -1,49 +1,70 @@
 source 'https://gems.ruby-china.org/'
 
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-# Use postgresql as the database for Active Record
-gem 'RedCloth'
-gem 'pg', '~> 0.18'
-# Use Puma as the app server
-gem 'puma', '~> 3.0'
-# Use SCSS for stylesheets
+gem 'rails', '>= 5.0.0', '< 5.1'
 gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'coffee-rails', '~> 4.1.0'
+gem 'uglifier', '>= 2.7.2'
 
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'foundation-rails', '~> 6.2.1'
+gem 'foundation-icons-sass-rails'
+gem 'font-awesome-sass'
+gem 'carrierwave'
+gem 'kaminari', github: 'amatsuda/kaminari'
+gem 'turbolinks', '~> 5.x'
+gem 'js_cookie_rails'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'rails-i18n', '~> 5.0.0'
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
-end
+gem 'jbuilder'
+gem 'pg'
+
+gem 'redcarpet'
+gem 'rouge'
+gem 'slim-rails'
+gem 'simple_form'
+gem 'mini_magick'
+gem 'html_truncator'
+gem 'nokogiri'
+gem 'figaro'
+gem 'sidekiq'
+gem 'redis-namespace'
+gem 'rest-client'
+gem 'newrelic_rpm'
+
+gem 'puma'
+
+gem 'mina', require: false
+
+gem 'mina-multistage', require: false
+gem 'mina-sidekiq', require: false
+gem 'mina-puma', require: false
+gem 'mina-logs', require: false
+gem 'browser_warrior'
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console'
-  gem 'listen', '~> 3.0.5'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'guard'
+  gem 'guard-rails'
+  gem 'guard-rspec', require: false
+  gem 'guard-bundler', require: false
+  gem 'listen', '~> 3.x'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  gem 'rack-cors', :require => 'rack/cors'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'rspec-sidekiq'
+  gem "codeclimate-test-reporter", group: :test, require: nil
+end
+
+group :test, :development do
+  gem "rspec-rails", ">= 2.8.1"
+  gem 'byebug'
+  gem 'factory_girl_rails'
+  gem 'rails-controller-testing'
+end
