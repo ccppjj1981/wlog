@@ -8,12 +8,19 @@ Rails.application.routes.draw do
     #resources :comments
     #end
 
-
+  resources :posts
   resources :posts , except: [:show] do
+    member do
+      get :srj_convert
+    end
     collection do
         post :preview
     end
-    resources :comments
+    resources :comments do
+      collection do
+        get :refresh
+      end
+    end
   end
 
   root 'welcome#index'

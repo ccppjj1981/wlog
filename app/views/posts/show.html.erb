@@ -2,10 +2,9 @@
   <strong>Title:</strong>
   <%= @post.title %>
 </p>
-
-<p>
-  <strong>Text:</strong>
-  <%= @post.text %>
+<p><%= button_to 'Convert',srj_convert_post_url(@post),method: 'get', remote: true %></p>
+<p,id="show-text">
+    <%= @post.text %>
 </p>
 
 <h2>Comments</h2>

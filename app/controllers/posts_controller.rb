@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
- 
+
   def preview
     Rails.logger.info("=============preview")
-    render plain: Post.render_html(params[:content] || "")
+    render plain: Post.render_html(params[:text] || "")
   end
 
   def index
@@ -13,7 +13,15 @@ class PostsController < ApplicationController
     Rails.logger.info("=============new")
     @post = Post.new
   end
-
+  def srj_convert
+    @post = Post.find(params[:id])
+    Rails.logger.info("=============#{@post.text}")
+    @mkdown_txt = Post.render_html(@post.text || "")
+    Rails.logger.info("============#{@mkdown_txt}")
+    respond_to do |format|
+      format.js
+    end
+  end
   def edit
     @post = Post.find(params[:id])
   end
@@ -33,9 +41,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(article_params)
+    Rails.logger.info("title=============#{params[:title]}")
+    Rails.logger.info("text=============#{params[:text]}")
+    @post = Post.new(params.permit(:title, :text))
+    #@post = Post.new(article_params)
     if @post.save
-      redirect_to @post
+      #redirect_to @post
+      redirect_to posts_path
     else
       render 'new'
     end
@@ -50,6 +62,6 @@ class PostsController < ApplicationController
 
   private
   def article_params
-    params.require(:post).permit(:title, :text)
+    params.require(:post).permit("title", "text")
   end
 end

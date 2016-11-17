@@ -7,16 +7,16 @@
   / tabs and upload file field
   ul.tabs#tabs data-tabs=''
     li.tabs-title.is-active
-      a href="#content" #{t('admin.posts_attributes.content')}
+      a href="#text" #{t('admin.posts_attributes.content')}
     li.tabs-title
       a href="#preview" #{t('admin.posts_attributes.preview')}
     = link_to t('admin.posts_attributes.upload_photo'), "#", :id=>'upload_photo'
-  
+
   input[type="file" style="display: none;"]
 
   .tabs-content data-tabs-content='tabs'
-    .tabs-panel.content-field.is-active#content
-      = f.input :text, :as=> :text, :label => false, input_html: { name: 'content', id: 'content-input' }
+    .tabs-panel.content-field.is-active#text
+      = f.input :text, :as=> :text, :label => false, input_html: { name: 'text', id: 'content-input' }
     .tabs-panel.preview.markdown#preview
 
     .row
