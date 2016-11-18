@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
 
-  def preview
-    Rails.logger.info("=============preview")
-    render plain: Post.render_html(params[:text] || "")
+  def convert_markdown
+    Rails.logger.info("=============convert_markdown")
+    @post = Post.find(params[:post_id])
+    render plain: Post.render_html(@post.text || "")
   end
 
   def index
@@ -28,11 +29,13 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @mkdown_txt = Post.render_html(@post.text || "")
+    #render plain: Post.render_html(@post.text || "")
   end
 
   def update
     @post = Post.find(params[:id])
-
+    Rails.logger.info("update=============#{params[:text]}")
     if @post.update(article_params)
       redirect_to @post
     else

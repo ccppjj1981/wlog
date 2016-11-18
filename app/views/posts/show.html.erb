@@ -2,11 +2,7 @@
   <strong>Title:</strong>
   <%= @post.title %>
 </p>
-<p><%= button_to 'Convert',srj_convert_post_url(@post),method: 'get', remote: true %></p>
-<p,id="show-text">
-    <%= @post.text %>
-</p>
-
+<p id="show-markdown" value= <%=@post.id%> ></p>
 <h2>Comments</h2>
 <%= render @post.comments%>
 

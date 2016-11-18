@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get :srj_convert
     end
     collection do
-        post :preview
+        post :convert_markdown
     end
     resources :comments do
       collection do
