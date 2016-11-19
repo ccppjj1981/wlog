@@ -44,10 +44,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    Rails.logger.info("title=============#{params[:title]}")
-    Rails.logger.info("text=============#{params[:text]}")
-    @post = Post.new(params.permit(:title, :text))
-    #@post = Post.new(article_params)
+    #Rails.logger.info("title=============#{params[:title]}")
+    #Rails.logger.info("text=============#{params[:text]}")
+    #@post = Post.new(params.permit(:title, :text))
+    @post = Post.new(article_params)
     if @post.save
       #redirect_to @post
       redirect_to posts_path

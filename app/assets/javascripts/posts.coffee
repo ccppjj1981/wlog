@@ -7,9 +7,11 @@
 $(document).ready(() ->
     post_id = $('#show-markdown').attr('value')
     console.log(post_id)
-    $.post('/posts/convert_markdown', {post_id: post_id}, (data) ->
-          console.log(data)
-          $('#show-markdown').html(data)
-    )
+    unless post_id == undefined
+      console.log(post_id)
+      $.post('/posts/convert_markdown', {post_id: post_id}, (data) ->
+            console.log(data)
+            $('#show-markdown').html(data)
+      )
 
 )
