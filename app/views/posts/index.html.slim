@@ -16,7 +16,7 @@
               i.fi-calendar
               span #{format_time(post.created_at)}
               i.fi-pricetag-multiple
-              span #{ post.text }
+              span #{ post.text.split[0..2] }
 
             td
               = link_to t('comment'), post_comments_path(post.id), class: 'edit-post-link'
