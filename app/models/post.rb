@@ -9,17 +9,13 @@ class Post < ApplicationRecord
     content = I18n.t('none') if content.blank? and !need_blank
     content
   end
-  def self.render_html(content)
-    rd = CodeHTML.new
-    md = Redcarpet::Markdown.new(rd, autolink: true, fenced_code_blocks: true)
-    md.render(content)
-  end
   def content_html
     self.class.render_html(self.text)
   end
   def self.render_html(content)
    Rails.logger.info("============render_html")
-   rd = CodeHTML.new
+   #rd = CodeHTML.new
+   rd = HTMLwithCodeRay.new
    md = Redcarpet::Markdown.new(rd, autolink: true, fenced_code_blocks: true)
    md.render(content)
   end
