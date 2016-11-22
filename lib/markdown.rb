@@ -10,6 +10,7 @@ class CodeHTML < Redcarpet::Render::HTML
 end
 class HTMLwithCodeRay < Redcarpet::Render::HTML
     def block_code(code, language)
+      Rails.logger.info("code==\n#{code}\n==language==\n#{language}")
       CodeRay.scan(code, language).div(:tab_width=>2)
     end
-end   
+end

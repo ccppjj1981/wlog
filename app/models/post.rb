@@ -12,12 +12,33 @@ class Post < ApplicationRecord
   def content_html
     self.class.render_html(self.text)
   end
+  #提取高亮代码
+  def self.hcode(content)
+    return unless content.match(/<code\s+(\w+)>/)
+    code = content.clone
+    if reg = code.match(/<code\s+(\w+)>/)
+      start = code.index(/<code\s+\w+>/)
+      last = code.index(/<\/code>/)
+      code = code.slice!(start+11..last-1)
+      code = CodeRay.scan(code, reg[1]).div(:tab_width=>2)
+    end
+  end
+  #把高亮代码替换到html
+  def self.replace_code(content, code)
+    if content.match(/<code\s+(\w+)>\n?(.*\n)*\n?<\/code>/)
+      content.gsub(/<code\s+(\w+)>\n?(.*\n)*\n?<\/code>/,code)
+    elsif content.match(/<code\s+(\w+)>.*<\/code>/)
+      content.gsub(/<code\s+(\w+)>.*<\/code>/,code)
+    end
+  end
   def self.render_html(content)
-   Rails.logger.info("============render_html")
    #rd = CodeHTML.new
+   code = hcode content
    rd = HTMLwithCodeRay.new
    md = Redcarpet::Markdown.new(rd, autolink: true, fenced_code_blocks: true)
-   md.render(content)
+   content = md.render(content)
+   content = replace_code(content,code)  unless code.nil?
+   content.html_safe
   end
   # truncate content for home page display
   def sub_content
