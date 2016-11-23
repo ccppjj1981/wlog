@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
 
   def convert_markdown
-    Rails.logger.info("=============convert_markdown")
     @post = Post.find(params[:post_id])
     render plain: Post.render_html(@post.text || "")
   end
@@ -11,14 +10,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    Rails.logger.info("=============new")
     @post = Post.new
   end
   def srj_convert
     @post = Post.find(params[:id])
-    Rails.logger.info("=============#{@post.text}")
     @mkdown_txt = Post.render_html(@post.text || "")
-    Rails.logger.info("============#{@mkdown_txt}")
     respond_to do |format|
       format.js
     end

@@ -4,4 +4,12 @@ class ApplicationController < ActionController::Base
   def format_time(time)
     time.strftime("%Y-%m-%d %H:%M")
   end
+  protected
+  def authericate_user!
+    if ! session[:login]
+      flash[:error] = '请先登录后台管理'
+      cookies[:urlback] = request.original_url
+      redirect_to new_admin_session_path
+    end
+  end
 end
