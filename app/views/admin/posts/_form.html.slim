@@ -1,0 +1,18 @@
+= form_for @post do |f|
+  -if @post.errors.any?
+    .post#error_explanation
+      h2 = pluralize(@post.errors.count, "error")
+       'prohibited this article from being saved:
+      ul
+        -@post.errors.full_messages.each do |msg|
+          li = msg
+  p 
+    = f.label :title,t('admin.posts_attributes.title')
+    = f.text_field :title
+  p 
+    = f.label :text,t('admin.posts_attributes.content')
+    |
+    = f.text_area :text
+  .row
+    .small-12.large-6.columns.posts-button
+      button.button type='submit' #{t('admin.posts_attributes.submit')}
