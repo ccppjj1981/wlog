@@ -15,6 +15,7 @@ puma.rb.bak
 /test/version_tmp/
 /tmp/
 /.rbenv-vars
+/shared
 
 # Used by dotenv library to load environment variables.
 # .env
