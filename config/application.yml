@@ -1,2 +1,4 @@
+# This section MUST be configured
 ADMIN_USER: 'admin'
 ADMIN_PASSWORD: 'admin'
+SITE_NAME: "Len-chen Blog"

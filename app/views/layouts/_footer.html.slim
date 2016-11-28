@@ -1,0 +1,14 @@
+.row
+  .small-12.columns
+    .footer
+      div
+        span.link = ENV['SITE_ADDRESS']
+        span.time = ENV['SITE_YEAR']
+      .license
+        | Designed by
+        span
+          = link_to 'Len-chen', 'http://cpjrials.cn', target: '_blank'
+      .license
+        | Built with
+        span
+          = link_to 'len-chen', 'https://cpjrails.cn', target: '_blank'
