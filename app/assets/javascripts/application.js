@@ -9,13 +9,15 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//require foundation
 //= require jquery
 //= require jquery_ujs
-//= require foundation
+//= require bootstrap-sprockets
+//= require bootstrap
+//= require bootstrap/dropdown
 //= require turbolinks
 //= require_tree .
 
 
-
-$(function(){ $(document).foundation(); });
+$('.dropdown-toggle').dropdown()
+//$(function(){ $(document).foundation(); });

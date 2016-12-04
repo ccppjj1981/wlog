@@ -1,8 +1,9 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
-@import 'foundation_and_overrides';
-@import 'foundation-icons';
-
+//@import 'foundation_and_overrides';
+//@import 'foundation-icons';
+@import "bootstrap-sprockets";
+@import "bootstrap";
 @import 'aboutme_welcome';
 @import 'archives';
 @import 'markdown';
@@ -22,4 +23,7 @@
 
 img {
   display: block;
+}
+.navbar-default {
+  background-color: #42a4f4;
 }

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :posts
+  resources :welcome
   resources :posts , except: [:show] do
     member do
       get :srj_convert

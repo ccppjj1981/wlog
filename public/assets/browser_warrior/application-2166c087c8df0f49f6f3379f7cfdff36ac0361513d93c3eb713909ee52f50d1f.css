@@ -1,0 +1,105 @@
+/* line 1, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+.browser-warrior-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CC000000', endColorstr='#CC000000',GradientType=0);
+  font: 12px/1.5 tahoma,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;
+  color: #666;
+}
+
+/* line 14, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+.browser-warrior-mask a {
+  color: #09F;
+  text-decoration: none;
+}
+
+/* line 18, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+.browser-warrior-mask a:hover {
+  color: #F90;
+}
+
+/* line 21, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+.browser-warrior-dialog {
+  position: absolute;
+  left: 50%;
+  margin-left: -340px;
+  top: 50%;
+  margin-top: -230px;
+  padding: 40px;
+  background: #FAFAFA;
+  width: 665px;
+  height: 380px;
+}
+
+/* line 32, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+.browser-warrior-title {
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 38, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+.browser-warrior-para {
+  padding: 0;
+  margin: 15px 0;
+  zoom: 1;
+}
+
+/* line 43, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+.browser-warrior-para:after {
+  content: ' ';
+  display: block;
+  clear: both;
+  font-size: 0;
+}
+
+/* line 49, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+a.browser-warrior-browser-link {
+  float: left;
+  text-align: center;
+  padding: 12px;
+  color: #666;
+}
+
+/* line 55, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+a.browser-warrior-browser-link:hover {
+  background: #EEE;
+}
+
+/* line 58, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+.browser-warrior-browser-icon {
+  display: block;
+  margin-bottom: 5px;
+  font-style: normal;
+  width: 135px;
+  height: 135px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* line 69, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+.browser-warrior-browser-icon-chrome {
+  background-image: url(/assets/browser_warrior/chrome-178dccc67e0317e638f8db43e625937da3172765234fd2de6f862d77c8dbfbbf.png);
+}
+
+/* line 73, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+.browser-warrior-browser-icon-opera {
+  background-image: url(/assets/browser_warrior/opera-f76fd95ddcdbfcdcd337f31c9114a38f6b8f4169935d11de2ec489101b15fae5.png);
+}
+
+/* line 76, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+.browser-warrior-browser-icon-firefox {
+  background-image: url(/assets/browser_warrior/firefox-98357dc76a0bd8817bf35368d76ed442bcc9d84db6ec06a6272b8da8d09208f5.png);
+}
+
+/* line 79, /Users/macbook/.rvm/gems/ruby-2.3.1/gems/browser_warrior-0.5.0/app/assets/stylesheets/browser_warrior/application.scss */
+.browser-warrior-browser-icon-ie {
+  background-image: url(/assets/browser_warrior/ie-cf7fd28dc9948a53b268db5ff569bb21b9dce7ce700c5eb448174af266fcaa7c.png);
+}
