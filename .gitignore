@@ -1,6 +1,7 @@
 .DS_Store
 /config/database.yml
 tmp/cache/*
+/public/assets/*
 *.gem
 *.rbc
 puma.rb

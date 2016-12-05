@@ -1,7 +1,7 @@
 - content_for(:title) do
   | #{t('title.home')}
 .row
-    .col-md-12
+    .col-md-11.col-md-offset-1
       - unless @newest
         = render 'common/no_blog_here'
       - else
