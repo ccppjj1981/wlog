@@ -9,5 +9,5 @@
         .content.markdown
           == @newest.sub_content
 
-          = link_to t('home.read'), posts_path, class: 'read-more'
+          = link_to t('home.read'), post_path(@newest.id), class: 'read-more'
         

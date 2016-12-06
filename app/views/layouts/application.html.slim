@@ -12,24 +12,23 @@ html
     = csrf_meta_tags
     = action_cable_meta_tag
   body
-    nav.navbar.navbar-default
-     .container-fluid
-      .navbar-header
-    		 button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#example-navbar-collapse"
-      			span.sr-only 切换导航
-      			span.icon-bar
-      			span.icon-bar
-      			span.icon-bar
-    		 = link_to ENV['SITE_NAME'], root_path,class: "navbar-brand"
-      .collapse.navbar-collapse id="example-navbar-collapse"
-       		ul.nav.navbar-right
-       			li.active
-                = link_to t('head.home'), root_path
-                li
-                  = link_to t('head.timeline'), posts_path
-                  li
-                    = link_to t('head.about'), about_path
-              
+    nav.navbar.navbar-default role="navigation"
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle type="button" data-toggle="collapse" data-target="#example-navbar-collapse"
+            span.sr-only
+              |切换导航
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to ENV['SITE_NAME'], root_path,class: "navbar-brand"
+        .collapse.navbar-collapse id="example-navbar-collapse"
+          ul.nav.navbar-nav.navbar-right
+            li.active 
+              = link_to t('head.home'), root_path
+            li.active 
+              = link_to t('head.timeline'), posts_path
+            li.active 
+              = link_to t('head.about'), about_path
     = yield
-    = render "layouts/footer"
-    
+    = render "layouts/footer" 
