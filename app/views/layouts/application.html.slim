@@ -29,6 +29,8 @@ html
             li.active 
               = link_to t('head.timeline'), posts_path
             li.active 
-              = link_to t('head.about'), about_path
+              = link_to  about_path do
+                  i.fi-torso
+                  | #{t('head.about')}
     = yield
     = render "layouts/footer" 

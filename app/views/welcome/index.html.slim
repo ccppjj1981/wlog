@@ -1,0 +1,22 @@
+html
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    - if content_for?(:meta)
+      = yield(:meta)
+    title
+      = content_for?(:title) ? yield(:title) + " | #{ENV['SITE_NAME']}" : ENV['SITE_NAME']
+    = stylesheet_link_tag "application", 'data-turbolinks-track' => "reload"
+    = favicon_link_tag 'favicon.png', type: 'image/png'
+    = javascript_include_tag "application", 'data-turbolinks-track' => "reload", 'defer' => true
+    = csrf_meta_tags
+    = action_cable_meta_tag
+  body
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          a.navbar-brand href="#"
+            |回到博客
+          
+
+  
