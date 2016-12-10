@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require bootstrap/dropdown
+//= require js.cookie
 //= require turbolinks
 //= require_tree .
 

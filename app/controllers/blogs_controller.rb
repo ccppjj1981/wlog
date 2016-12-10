@@ -7,4 +7,10 @@ class BlogsController < ApplicationController
       format.json
     end
   end
+  def show
+    @post = Post.find(params[:id])
+    @mkdown_txt = Post.render_html(@post.text || "")
+    @likes_count = @post.likes.count
+    #render plain: Post.render_html(@post.text || "")
+  end
 end

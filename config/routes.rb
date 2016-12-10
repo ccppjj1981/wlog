@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :posts
+  resources :blogs do
+    resources :likes, only: [:index, :create, :destroy]
+  end
   resources :welcome
   resources :posts , except: [:show] do
     member do

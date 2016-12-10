@@ -1,5 +1,6 @@
 require 'markdown'
 class Post < ApplicationRecord
+  has_many :likes
   has_many :comments ,dependent: :destroy
   validates :title, presence: true,
                    length: { minimum: 5 }
@@ -50,5 +51,13 @@ class Post < ApplicationRecord
     # Easily get text for Nokogiri
     html = '<div>' + html + '</div>'
     Nokogiri.parse(html).text()
+  end
+
+  def liked_count
+    self.likes.size
+  end
+
+  def liked_by?(like_id)
+    !! self.likes.where(id: like_id).first
   end
 end

@@ -1,0 +1,13 @@
+.container
+  .row
+    .col-lg-12.col-sm12
+      p
+        strong Title:
+        = @post.title
+  .row#content-blog
+    .col-lg-12.col-sm12
+      p class="show-mk"id="show-markdown" value =  @post.id
+  .row
+    .col-lg-12
+      = render partial: "post", :locals=> { post: @post }
+  = render 'comments/form'

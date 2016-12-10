@@ -8,6 +8,5 @@ $(document).on 'turbolinks:load', ->
     post_id = $('#show-markdown').attr('value')
     unless post_id == undefined
       $.post('/posts/convert_markdown', {post_id: post_id}, (data) ->
-            console.log(data)
-            $('#show-markdown').html(data)
+          $('#show-markdown').html(data)
       )
