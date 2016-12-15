@@ -24,6 +24,16 @@
 img {
   display: block;
 }
-.navbar-default {
-  background-color: #42a4f4;
+.navbar-default .navbar-nav>li>a {
+   font-size:20px;
+   color: #F79C9C;
+
+}
+.navbar-inverse .navbar-nav>.active>a {
+        background:#EFD9C1;
+        color: #A9B7C0 !important;
+      }
+
+.navbar-inverse {
+  background-color: #A9B7C0 !important;
 }

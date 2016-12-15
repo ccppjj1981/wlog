@@ -12,10 +12,10 @@ html
     = csrf_meta_tags
     = action_cable_meta_tag
   body
-    nav.navbar.navbar-default role="navigation"
+    nav.navbar.navbar-default.navbar-inverse role="navigation"
       .container-fluid
         .navbar-header
-          button.navbar-toggle type="button" data-toggle="collapse" data-target="#example-navbar-collapse"
+          button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#example-navbar-collapse"
             span.sr-only
               |切换导航
             span.icon-bar
@@ -23,7 +23,7 @@ html
             span.icon-bar
           = link_to ENV['SITE_NAME'], root_path,class: "navbar-brand"
         .collapse.navbar-collapse id="example-navbar-collapse"
-          ul.nav.navbar-nav.navbar-right
+          ul.nav.navbar-nav.navbar-right id= "app-ul" style= "background-color: blue"
             li.active 
               = link_to t('head.home'), root_path
             li.active 

@@ -3,7 +3,7 @@
 .row
     .col-md-11.col-md-offset-1
       - unless @newest
-        = render 'common/no_blog_here'
+        h1 Welcom Wblog
       - else
         = render partial: 'post_head', locals: { post: @newest }
         .content.markdown

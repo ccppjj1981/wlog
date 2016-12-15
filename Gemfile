@@ -1,11 +1,12 @@
 source 'https://gems.ruby-china.org/'
+gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'coderay'
 gem 'rails', '>= 5.0.0', '< 5.1'
 gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '>= 2.7.2'
-
+gem 'rake','=12.0.0'
 gem 'jquery-rails'
 gem 'foundation-rails', '~> 6.2.1'
 gem 'foundation-icons-sass-rails'

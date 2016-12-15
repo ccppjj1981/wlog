@@ -1,6 +1,6 @@
 class Admin::DashboardController < ApplicationController
   layout 'layouts/admin'
-  before_action :authericate_user!
+  before_action :authenticate_user!
   def index
     @posts_count = Post.all.size
     @comments_count = Comment.all.size
