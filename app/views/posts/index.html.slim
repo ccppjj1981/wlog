@@ -1,24 +1,26 @@
-.row.admin-posts-field
-  .small-12.columns
-    h3.blog-title #{t('admin.posts') }
-    table width="100%"
-      thead
-        tr
-          th #{t('admin.posts_head.title')}
-          th #{t('admin.posts_head.summary')}
-          th #{t('admin.posts_head.operation')}
-      tbody
-        - @posts.each do |post|
+.container
+  .row.admin-posts-field
+    .small-12.columns
+      h3.blog-title #{t('admin.posts') }
+      table width="100%"
+        thead
           tr
-            td
-              = link_to post.title, post_path(post)
-            td.admin-post-summary-field
-              i.fi-calendar
-              span #{format_time(post.created_at)}
-              i.fi-pricetag-multiple
-              span #{ post.text.split[0..2] }
+            th #{t('admin.posts_head.title')}
+            th #{t('admin.posts_head.summary')}
+            th #{t('admin.posts_head.operation')}
+        tbody
+          - @posts.each do |post|
+            tr
+              td
+                = link_to post.title, post_path(post)
+              td.admin-post-summary-field
+                i.fi-calendar
+                span #{format_time(post.created_at)}
+                i.fi-pricetag-multiple
+                span #{ post.text.split[0..2] }
 
-            td
-              = link_to t('comment'), post_comments_path(post.id), class: 'edit-post-link'
-              = link_to t('edit'), edit_post_path(post), class: 'edit-post-link'
-              = link_to t('destroy'), post_path(post), method: 'DELETE', 'data-confirm' => '确认删除?'
+              td
+                = link_to t('comment'), post_comments_path(post.id), class: 'edit-post-link'
+                = link_to t('edit'), edit_post_path(post), class: 'edit-post-link'
+                = link_to t('destroy'), post_path(post), method: 'DELETE', 'data-confirm' => '确认删除?'
+      == paginate @posts
