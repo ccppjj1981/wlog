@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :posts
+  #devise_for :users
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'
+  }
   resources :blogs do
     resources :likes, only: [:index, :create, :destroy]
   end
   resources :welcome
+  resources :posts
   resources :posts , except: [:show] do
     member do
       get :srj_convert

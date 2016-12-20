@@ -1,0 +1,12 @@
+h2
+  |评论
+- @post.comments.each do |comment|
+  p#commenter
+    strong
+      |Commenter:
+    = comment.commenter
+  p#comment 
+    strong
+      |Comment:
+    br
+    = comment.body

@@ -1,7 +1,13 @@
+set :stages, %w(production)
+set :default_stage, 'production'
+require 'mina/multistage'
+require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
-require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
-require 'mina/rvm'    # for rvm support. (https://rvm.io)
+require 'mina/rbenv'
+require 'mina/puma'
+require "mina_sidekiq/tasks"
+require 'mina/logs'
 
 # Basic settings:
 #   domain       - The hostname to SSH to.
@@ -9,10 +15,6 @@ require 'mina/rvm'    # for rvm support. (https://rvm.io)
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, 'ubuntu@119.29.253.30'
-set :deploy_to, '/home/ubuntu/wblog/wlog'
-set :repository, 'https://github.com/ccppjj1981/wlog.git'
-set :branch, 'master'
 
 # Optional settings:
 #   set :user, 'foobar'          # Username in the server to SSH to.
@@ -22,45 +24,51 @@ set :branch, 'master'
 # shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
 # set :shared_dirs, fetch(:shared_dirs, []).push('somedir')
 # set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
-
+#puma -b unix:///home/ubuntu/wblog/wlog/shared/sockets/puma.sock
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
-task :environment do
-  # If you're using rbenv, use this to load the rbenv environment.
-  # Be sure to commit your .ruby-version or .rbenv-version to your repository.
-  invoke :'rbenv:load'
+set :shared_paths, ['config/database.yml', 'config/application.yml', 'log', 'public/uploads']
+set :puma_config, ->{ "#{deploy_to}/#{current_path}/config/puma.rb" }
+set :sidekiq_pid, ->{ "#{deploy_to}/#{shared_path}/tmp/pids/sidekiq.pid" }
 
-  # For those using RVM, use this to load an RVM version@gemset.
-  # invoke :'rvm:use', 'ruby-1.9.3-p125@default'
+task :environment do
+  invoke :'rbenv:load'
 end
 
-# Put any custom commands you need to run at setup
-# All paths in `shared_dirs` and `shared_paths` will be created on their own.
-task :setup do
-  # command %{rbenv install 2.3.0}
-  ['config', 'log', 'tmp', 'public/uploads', 'public/personal'].each do |dir|
-    queue! %[mkdir -p "#{deploy_to}/shared/#{dir}"]
-    queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/#{dir}"]
-  end
-
-  ['config/database.yml', 'config/application.yml'].each do |file|
-    queue! %[touch "#{deploy_to}/shared/#{file}"]
-    queue  %[echo "-----> Be sure to edit 'shared/#{file}'."]
-  end
-
-  queue! %[mkdir -p "#{deploy_to}/shared/pids/"]
+task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/tmp/sockets"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp/sockets"]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/pids"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/pids"]
+
   queue! %[mkdir -p "#{deploy_to}/shared/tmp/pids"]
-  queue! %[mkdir -p "#{deploy_to}/shared/log/"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp/pids"]
+
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/log"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log"]
+
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/public/uploads"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/public/uploads"]
+
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
+
+  queue! %[touch "#{deploy_to}/#{shared_path}/config/application.yml"]
+  queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/application.yml'"]
+
+  queue! %[touch "#{deploy_to}/#{shared_path}/config/database.yml"]
+  queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml'"]
 end
 
 desc "Deploys the current version to the server."
-task :deploy do
-  # uncomment this line to make sure you pushed your local branch to the remote origin
-  # invoke :'git:ensure_pushed'
+task :deploy => :environment do
+  queue  %[echo "-----> Server: #{domain}"]
+  queue  %[echo "-----> Path: #{deploy_to}"]
+  queue  %[echo "-----> Branch: #{branch}"]
+
   deploy do
-    # Put things that will set up an empty directory into a fully set-up
-    # instance of your project.
+    invoke :'sidekiq:quiet'
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
@@ -68,18 +76,27 @@ task :deploy do
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
-    on :launch do
-      in_path(fetch(:current_path)) do
-        command %{mkdir -p tmp/}
-        command %{touch tmp/restart.txt}
-      end
+    to :launch do
+      invoke :'puma:hard_restart'
+      invoke :'sidekiq:restart'
     end
   end
-
-  # you can use `run :local` to run tasks on local machine before of after the deploy scripts
-  # run :local { say 'done' }
 end
 
-# For help in making your deploy script, see the Mina documentation:
-#
-#  - https://github.com/mina-deploy/mina/tree/master/docs
+desc "Deploys the current version to the server."
+task :first_deploy => :environment do
+  queue  %[echo "-----> Server: #{domain}"]
+  queue  %[echo "-----> Path: #{deploy_to}"]
+  queue  %[echo "-----> Branch: #{branch}"]
+
+  deploy do
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    invoke :'deploy:cleanup'
+
+    to :launch do
+      invoke :'rails:db_create'
+    end
+  end
+end

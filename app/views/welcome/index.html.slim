@@ -12,11 +12,20 @@ html
     = csrf_meta_tags
     = action_cable_meta_tag
   body
-    nav.navbar.navbar-default.navbar-fixed-top
+    
+    nav.navbar.navbar-default
       .container-fluid
         .navbar-header
-          a.navbar-brand href="#"
-            |回到博客
-          
+          = link_to "回到博客", root_path
+    .container
+      .row
+         .col-md-12
+           h1 关于我
+           p 我是陈培建, 一个普通的码农.
+           p
+            | 在九城恩科 工作约 2 年多( 2007.10 - 2010.1) 使用C++语言的MFC库做关务软件的开发
+           p
+            | 在易思博 工作约 6 年( 2010.10 - 至今) 主要使用ruby语言进行仪表系统自动化集成和自动化执行框架测试支撑的开发
+    
 
   

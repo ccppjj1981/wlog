@@ -1,7 +1,8 @@
-p
-    strong Title:
-    = @post.title
-    p class="show-mk"id="show-markdown" value =  @post.id
-    = render 'comments/form'
-    = link_to 'Edit', edit_post_path(@post)
-    = link_to 'Back', posts_path
+.container
+    h1
+      = @post.title
+      p class="show-mk"id="show-markdown" value =  @post.id
+      = render 'comments/comment'
+      = render 'comments/form'
+      = link_to 'Edit', edit_post_path(@post)
+      = link_to 'Back', posts_path
