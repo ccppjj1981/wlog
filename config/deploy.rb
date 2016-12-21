@@ -34,7 +34,9 @@ set :sidekiq_pid, ->{ "#{deploy_to}/#{shared_path}/tmp/pids/sidekiq.pid" }
 task :environment do
   invoke :'rbenv:load'
 end
-
+task :show do
+  queue %[echo "-----> Server: #{puma_config}"]
+end
 task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/tmp/sockets"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp/sockets"]
