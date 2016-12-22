@@ -1,6 +1,6 @@
 //= form_for @post ,role: "form" ,action: "admin_post" do |f|
 - url = @post.new_record? ? admin_posts_path : admin_post_path(@post)
-= simple_form_for(@post, url: url, html: {novalidate: '' }) do |f|
+= simple_form_for(@post, url: url, html: {novalidate: '' },role: "form") do |f|
   -if @post.errors.any?
     .post#error_explanation
       h2 = pluralize(@post.errors.count, "error")
@@ -9,13 +9,16 @@
         -@post.errors.full_messages.each do |msg|
           li = msg
   .form-group 
-    = f.label :title,t('admin.posts_attributes.title')
-    = f.text_field :title
+    //= f.label :title,t('admin.posts_attributes.title')
+    //= f.text_field :title
+    label for="title"
+      |标题
+    input type="text" class="form-control" name="post[title]" id="title" placeholder="请输入标题"
   .form-group
-    = f.label :text,t('admin.posts_attributes.content')
-    |
+    //= f.label :text,t('admin.posts_attributes.content')
     //= f.text_area :text
-    textarea.form-control row=5 name="post[text]"
-  .row
-    .small-12.large-6.columns.posts-button
-      button.button type='submit' #{t('admin.posts_attributes.submit')}
+    label for="text"
+      |内容
+    textarea.form-control rows=10 name="post[text]"
+  button.btn.btn-primary type='submit' #{t('admin.posts_attributes.submit')}
+  
