@@ -1,4 +1,4 @@
-= form_for [@post, @post.comments.build],role: "form",class: 'fdsfdsf' do |f|
+= form_for [@post, @post.comments.build],role: "form" do |f|
   .form-group
     input.form-control#commenter placeholder="请输入邮件地址" type="text" name="comment[commenter]"
   .form-group

@@ -32,5 +32,6 @@ html
               = link_to  about_path do
                   i.fi-torso
                   | #{t('head.about')}
-    = yield
-    = render "layouts/footer" 
+    .container
+      = yield
+      = render "layouts/footer" 

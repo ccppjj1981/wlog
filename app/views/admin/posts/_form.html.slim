@@ -1,4 +1,6 @@
-= form_for @post do |f|
+//= form_for @post ,role: "form" ,action: "admin_post" do |f|
+- url = @post.new_record? ? admin_posts_path : admin_post_path(@post)
+= simple_form_for(@post, url: url, html: {novalidate: '' }) do |f|
   -if @post.errors.any?
     .post#error_explanation
       h2 = pluralize(@post.errors.count, "error")
@@ -6,13 +8,14 @@
       ul
         -@post.errors.full_messages.each do |msg|
           li = msg
-  p 
+  .form-group 
     = f.label :title,t('admin.posts_attributes.title')
     = f.text_field :title
-  p 
+  .form-group
     = f.label :text,t('admin.posts_attributes.content')
     |
-    = f.text_area :text
+    //= f.text_area :text
+    textarea.form-control row=5 name="post[text]"
   .row
     .small-12.large-6.columns.posts-button
       button.button type='submit' #{t('admin.posts_attributes.submit')}

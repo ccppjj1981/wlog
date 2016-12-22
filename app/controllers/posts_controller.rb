@@ -41,7 +41,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    #Rails.logger.info("title=============#{params[:title]}")
+    Rails.logger.info("post=============create")
     #Rails.logger.info("text=============#{params[:text]}")
     #@post = Post.new(params.permit(:title, :text))
     @post = Post.new(article_params)

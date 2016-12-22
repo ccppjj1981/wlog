@@ -33,3 +33,499 @@ Exiting
 [589] === puma shutdown: 2016-11-14 23:44:58 +0800 ===
 [589] - Goodbye!
 Exiting
+=== puma startup: 2016-12-21 23:54:28 +0800 ===
+[14025] - Worker 0 (pid: 14064) booted, phase: 0
+Started GET "/" for ::1 at 2016-12-21 23:54:50 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (4.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BlogsController#index as HTML
+  [1m[36mPost Load (8.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  Rendering blogs/index.html.slim within layouts/application
+  Rendered blogs/_post_head.html.slim (3.0ms)
+  Rendered blogs/index.html.slim within layouts/application (102.9ms)
+  Rendered layouts/_footer.html.slim (4.2ms)
+Completed 200 OK in 2423ms (Views: 2350.9ms | ActiveRecord: 19.7ms)
+
+
+Started GET "/admin" for ::1 at 2016-12-21 23:55:00 +0800
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 17ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-12-21 23:55:00 +0800
+Processing by Users::SessionsController#new as HTML
+==<ActionController::Parameters {"controller"=>"users/sessions", "action"=>"new"} permitted: false>
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (1.3ms)
+  Rendered users/sessions/new.html.erb within layouts/application (177.8ms)
+  Rendered layouts/_footer.html.slim (7.4ms)
+Completed 200 OK in 351ms (Views: 320.1ms | ActiveRecord: 6.8ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-12-21 23:55:20 +0800
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tfRSPlScO+JQwdVow3P0bsOIDFZF1/BPqvlbOmowhcNGHR54SE5JVP4XIKR23FpRHvoY0bfxp3Gbiv5XgmIaug==", "user"=>{"email"=>"admin@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+create==<ActionController::Parameters {"utf8"=>"✓", "authenticity_token"=>"tfRSPlScO+JQwdVow3P0bsOIDFZF1/BPqvlbOmowhcNGHR54SE5JVP4XIKR23FpRHvoY0bfxp3Gbiv5XgmIaug==", "user"=>{"email"=>"admin@gmail.com", "password"=>"1234562", "remember_me"=>"0"}, "commit"=>"Log in", "controller"=>"users/sessions", "action"=>"create"} permitted: false>
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 191ms (ActiveRecord: 6.6ms)
+
+
+Processing by Users::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tfRSPlScO+JQwdVow3P0bsOIDFZF1/BPqvlbOmowhcNGHR54SE5JVP4XIKR23FpRHvoY0bfxp3Gbiv5XgmIaug==", "user"=>{"email"=>"admin@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+==<ActionController::Parameters {"utf8"=>"✓", "authenticity_token"=>"tfRSPlScO+JQwdVow3P0bsOIDFZF1/BPqvlbOmowhcNGHR54SE5JVP4XIKR23FpRHvoY0bfxp3Gbiv5XgmIaug==", "user"=>{"email"=>"admin@gmail.com", "password"=>"1234562", "remember_me"=>"0"}, "commit"=>"Log in", "controller"=>"users/sessions", "action"=>"create"} permitted: false>
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (1.1ms)
+  Rendered users/sessions/new.html.erb within layouts/application (8.1ms)
+  Rendered layouts/_footer.html.slim (6.8ms)
+Completed 200 OK in 258ms (Views: 113.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-12-21 23:57:33 +0800
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uewuBACmb1wVk92d4LMuXnLwZvufE1dByY9574mTfaRKBWJCHHQd6rtFKFFVHIBhr4JyfG01AH/4/NyCYcHi3Q==", "user"=>{"email"=>"admin@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+create==<ActionController::Parameters {"utf8"=>"✓", "authenticity_token"=>"uewuBACmb1wVk92d4LMuXnLwZvufE1dByY9574mTfaRKBWJCHHQd6rtFKFFVHIBhr4JyfG01AH/4/NyCYcHi3Q==", "user"=>{"email"=>"admin@gmail.com", "password"=>"123456e", "remember_me"=>"0"}, "commit"=>"Log in", "controller"=>"users/sessions", "action"=>"create"} permitted: false>
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (4.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", 2016-12-21 15:57:34 UTC], ["last_sign_in_at", 2016-12-18 15:33:37 UTC], ["sign_in_count", 10], ["updated_at", 2016-12-21 15:57:34 UTC], ["id", 1]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 208ms (ActiveRecord: 11.0ms)
+
+
+Started GET "/admin" for ::1 at 2016-12-21 23:57:34 +0800
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments"[0m
+  Rendering admin/dashboard/index.html.slim within layouts/admin
+  Rendered admin/dashboard/index.html.slim within layouts/admin (6.7ms)
+Completed 200 OK in 114ms (Views: 85.9ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-21 23:57:36 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (8.5ms)
+  Rendered admin/posts/new.html.slim within layouts/application (14.2ms)
+  Rendered layouts/_footer.html.slim (6.3ms)
+Completed 200 OK in 131ms (Views: 127.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-21 23:57:36 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (5.2ms)
+  Rendered admin/posts/new.html.slim within layouts/application (9.5ms)
+  Rendered layouts/_footer.html.slim (6.4ms)
+Completed 200 OK in 125ms (Views: 122.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 00:00:00 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (4.8ms)
+  Rendered admin/posts/new.html.slim within layouts/application (9.7ms)
+  Rendered layouts/_footer.html.slim (5.9ms)
+Completed 200 OK in 119ms (Views: 114.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 00:00:08 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (5.4ms)
+  Rendered admin/posts/new.html.slim within layouts/application (10.5ms)
+  Rendered layouts/_footer.html.slim (6.1ms)
+Completed 200 OK in 107ms (Views: 104.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for ::1 at 2016-12-22 00:01:37 +0800
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments"[0m
+  Rendering admin/dashboard/index.html.slim within layouts/admin
+  Rendered admin/dashboard/index.html.slim within layouts/admin (10.5ms)
+Completed 200 OK in 168ms (Views: 156.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/admin" for ::1 at 2016-12-22 00:01:38 +0800
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments"[0m
+  Rendering admin/dashboard/index.html.slim within layouts/admin
+  Rendered admin/dashboard/index.html.slim within layouts/admin (12.4ms)
+Completed 200 OK in 180ms (Views: 169.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 00:01:43 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (6.5ms)
+  Rendered admin/posts/new.html.slim within layouts/application (11.5ms)
+  Rendered layouts/_footer.html.slim (7.4ms)
+Completed 200 OK in 173ms (Views: 169.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 00:01:43 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (6.0ms)
+  Rendered admin/posts/new.html.slim within layouts/application (12.5ms)
+  Rendered layouts/_footer.html.slim (8.0ms)
+Completed 200 OK in 139ms (Views: 136.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 00:04:23 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (7.4ms)
+  Rendered admin/posts/new.html.slim within layouts/application (13.3ms)
+Completed 200 OK in 122ms (Views: 118.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 00:05:13 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (5.5ms)
+  Rendered admin/posts/new.html.slim within layouts/application (12.4ms)
+  Rendered layouts/_footer.html.slim (7.4ms)
+Completed 200 OK in 125ms (Views: 123.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 00:05:16 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (6.3ms)
+  Rendered admin/posts/new.html.slim within layouts/application (10.2ms)
+  Rendered layouts/_footer.html.slim (8.9ms)
+Completed 200 OK in 114ms (Views: 111.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 00:06:22 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (5.2ms)
+  Rendered admin/posts/new.html.slim within layouts/application (9.5ms)
+  Rendered layouts/_footer.html.slim (4.3ms)
+Completed 200 OK in 108ms (Views: 106.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 00:06:54 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (4.7ms)
+  Rendered admin/posts/new.html.slim within layouts/application (9.3ms)
+  Rendered layouts/_footer.html.slim (6.5ms)
+Completed 200 OK in 116ms (Views: 113.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 00:10:28 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (5.5ms)
+  Rendered admin/posts/new.html.slim within layouts/application (12.1ms)
+  Rendered layouts/_footer.html.slim (7.7ms)
+Completed 200 OK in 137ms (Views: 132.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 00:12:00 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (5.1ms)
+  Rendered admin/posts/new.html.slim within layouts/application (10.0ms)
+  Rendered layouts/_footer.html.slim (6.0ms)
+Completed 200 OK in 118ms (Views: 115.6ms | ActiveRecord: 0.0ms)
+
+
+[14025] ! Terminating timed out worker: 14064
+[14025] ! Out-of-sync worker list, no 14064 worker
+[14025] - Worker 0 (pid: 14329) booted, phase: 0
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 20:05:44 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (2.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (85.9ms)
+  Rendered admin/posts/new.html.slim within layouts/application (108.5ms)
+  Rendered layouts/_footer.html.slim (4.4ms)
+Completed 200 OK in 1478ms (Views: 1403.9ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 20:13:29 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (6.8ms)
+  Rendered admin/posts/new.html.slim within layouts/application (10.9ms)
+  Rendered layouts/_footer.html.slim (6.6ms)
+Completed 200 OK in 114ms (Views: 109.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for ::1 at 2016-12-22 20:13:52 +0800
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dv+sjzRDmUZen9xIlpXQ4Uesi6ErsHJgGhtHrslmj6n1/rOWlZw/bLcu/FBY0oM4mJI+/zvk3+go0Kh6W+FGsw==", "post"=>{"title"=>"1111111", "text"=>"1111111111111112212121212121"}}
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  Rendering posts/new.html.slim within layouts/application
+  Rendered posts/_form.html.erb (8.7ms)
+  Rendered posts/new.html.slim within layouts/application (17.2ms)
+  Rendered layouts/_footer.html.slim (5.0ms)
+Completed 200 OK in 142ms (Views: 133.8ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/posts" for ::1 at 2016-12-22 20:14:21 +0800
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dv+sjzRDmUZen9xIlpXQ4Uesi6ErsHJgGhtHrslmj6n1/rOWlZw/bLcu/FBY0oM4mJI+/zvk3+go0Kh6W+FGsw==", "post"=>{"title"=>"1111111", "text"=>"1111111111111112212121212121dsadsadasdaskajkdajdkajskdakdjaksjdkas"}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (4.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "1111111"], ["text", "1111111111111112212121212121dsadsadasdaskajkdajdkajskdakdjaksjdkas"], ["created_at", 2016-12-22 12:14:21 UTC], ["updated_at", 2016-12-22 12:14:21 UTC]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 18ms (ActiveRecord: 6.6ms)
+
+
+Started GET "/posts" for ::1 at 2016-12-22 20:14:21 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.slim within layouts/application (28.0ms)
+  Rendered layouts/_footer.html.slim (5.6ms)
+Completed 200 OK in 139ms (Views: 134.7ms | ActiveRecord: 1.3ms)
+
+
+Started DELETE "/posts/22" for ::1 at 2016-12-22 20:14:33 +0800
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"H47UJC8d7Z3IQe0E7bvyik3a1dwZw5EVSUQnEwu/+Iycj8s9jsJLtyHwzRwj/KFTkuRgggmXPJ17j8jHmTgxlg==", "id"=>"22"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Load (2.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  [1m[35mSQL (3.4ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 22]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 63ms (ActiveRecord: 13.2ms)
+
+
+Started GET "/posts" for ::1 at 2016-12-22 20:14:33 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.slim within layouts/application (19.4ms)
+  Rendered layouts/_footer.html.slim (7.9ms)
+Completed 200 OK in 130ms (Views: 126.1ms | ActiveRecord: 1.0ms)
+
+
+[14025] - Gracefully shutting down workers...
+[14025] === puma shutdown: 2016-12-22 20:24:40 +0800 ===
+[14025] - Goodbye!
+Exiting
+=== puma startup: 2016-12-22 20:24:51 +0800 ===
+[14697] - Worker 0 (pid: 14737) booted, phase: 0
+Started GET "/posts/admin" for ::1 at 2016-12-22 20:26:00 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"admin"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 40ms (ActiveRecord: 6.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=admin):
+  
+app/controllers/posts_controller.rb:28:in `show'
+  Rendering /Users/macbook/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/macbook/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.3ms)
+  Rendering /Users/macbook/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendering /Users/macbook/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (87.8ms)
+Started GET "/admin" for ::1 at 2016-12-22 20:26:10 +0800
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments"[0m
+  Rendering admin/dashboard/index.html.slim within layouts/admin
+  Rendered admin/dashboard/index.html.slim within layouts/admin (43.0ms)
+Started GET "/admin" for ::1 at 2016-12-22 20:26:10 +0800
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments"[0m
+  Rendering admin/dashboard/index.html.slim within layouts/admin
+  Rendered admin/dashboard/index.html.slim within layouts/admin (11.3ms)
+Completed 200 OK in 566ms (Views: 547.1ms | ActiveRecord: 8.9ms)
+
+
+Completed 200 OK in 1239ms (Views: 1200.5ms | ActiveRecord: 10.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 20:26:13 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (12.7ms)
+  Rendered admin/posts/new.html.slim within layouts/application (17.6ms)
+  Rendered layouts/_footer.html.slim (6.2ms)
+Completed 200 OK in 119ms (Views: 107.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 20:26:13 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (5.5ms)
+  Rendered admin/posts/new.html.slim within layouts/application (9.6ms)
+  Rendered layouts/_footer.html.slim (4.0ms)
+Completed 200 OK in 97ms (Views: 94.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 20:31:03 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (5.0ms)
+  Rendered admin/posts/new.html.slim within layouts/application (9.9ms)
+  Rendered layouts/_footer.html.slim (9.5ms)
+Completed 200 OK in 137ms (Views: 135.6ms | ActiveRecord: 0.0ms)
+
+
+[14697] ! Terminating timed out worker: 14737
+[14697] ! Out-of-sync worker list, no 14737 worker
+[14697] - Worker 0 (pid: 14946) booted, phase: 0
+[14697] - Gracefully shutting down workers...
+[14697] === puma shutdown: 2016-12-22 20:50:12 +0800 ===
+[14697] - Goodbye!
+Exiting
+=== puma startup: 2016-12-22 20:51:47 +0800 ===
+[15073] - Worker 0 (pid: 15113) booted, phase: 0
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 20:52:01 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (35.2ms)
+  Rendered admin/posts/new.html.slim within layouts/application (49.6ms)
+  Rendered layouts/_footer.html.slim (7.8ms)
+Completed 200 OK in 1005ms (Views: 971.1ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/admin/posts/new" for ::1 at 2016-12-22 20:52:05 +0800
+Processing by Admin::PostsController#new as HTML
+  Rendering admin/posts/new.html.slim within layouts/application
+  Rendered admin/posts/_form.html.slim (6.8ms)
+  Rendered admin/posts/new.html.slim within layouts/application (14.4ms)
+  Rendered layouts/_footer.html.slim (5.3ms)
+Completed 200 OK in 131ms (Views: 127.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for ::1 at 2016-12-22 20:52:12 +0800
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments"[0m
+  Rendering admin/dashboard/index.html.slim within layouts/admin
+  Rendered admin/dashboard/index.html.slim within layouts/admin (24.1ms)
+Completed 200 OK in 201ms (Views: 163.4ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/" for ::1 at 2016-12-22 20:52:13 +0800
+Processing by BlogsController#index as HTML
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  Rendering blogs/index.html.slim within layouts/application
+  Rendered blogs/_post_head.html.slim (3.5ms)
+  Rendered blogs/index.html.slim within layouts/application (30.9ms)
+  Rendered layouts/_footer.html.slim (6.8ms)
+Completed 200 OK in 159ms (Views: 152.2ms | ActiveRecord: 1.6ms)
+
+
+[15073] - Gracefully shutting down workers...
+[15073] === puma shutdown: 2016-12-22 20:52:43 +0800 ===
+[15073] - Goodbye!
+Exiting
+=== puma startup: 2016-12-22 20:54:07 +0800 ===
+[15193] - Worker 0 (pid: 15233) booted, phase: 0
+Started GET "/" for ::1 at 2016-12-22 20:54:13 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BlogsController#index as HTML
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  Rendering blogs/index.html.slim within layouts/application
+  Rendered blogs/_post_head.html.slim (4.7ms)
+  Rendered blogs/index.html.slim within layouts/application (45.3ms)
+  Rendered layouts/_footer.html.slim (7.7ms)
+Completed 200 OK in 974ms (Views: 935.8ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/" for ::1 at 2016-12-22 20:54:17 +0800
+Processing by BlogsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  Rendering blogs/index.html.slim within layouts/application
+  Rendered blogs/_post_head.html.slim (2.7ms)
+  Rendered blogs/index.html.slim within layouts/application (11.1ms)
+  Rendered layouts/_footer.html.slim (6.4ms)
+Completed 200 OK in 125ms (Views: 121.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2016-12-22 20:54:21 +0800
+Processing by BlogsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  Rendering blogs/index.html.slim within layouts/application
+  Rendered blogs/_post_head.html.slim (2.9ms)
+  Rendered blogs/index.html.slim within layouts/application (12.1ms)
+  Rendered layouts/_footer.html.slim (7.9ms)
+Completed 200 OK in 130ms (Views: 125.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2016-12-22 20:54:26 +0800
+Processing by BlogsController#index as HTML
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  Rendering blogs/index.html.slim within layouts/application
+  Rendered blogs/_post_head.html.slim (2.8ms)
+  Rendered blogs/index.html.slim within layouts/application (12.5ms)
+  Rendered layouts/_footer.html.slim (4.5ms)
+Completed 200 OK in 112ms (Views: 105.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2016-12-22 20:54:29 +0800
+Processing by BlogsController#index as HTML
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  Rendering blogs/index.html.slim within layouts/application
+  Rendered blogs/_post_head.html.slim (4.6ms)
+  Rendered blogs/index.html.slim within layouts/application (17.0ms)
+  Rendered layouts/_footer.html.slim (7.7ms)
+Completed 200 OK in 142ms (Views: 134.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2016-12-22 20:54:31 +0800
+Processing by BlogsController#index as HTML
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  Rendering blogs/index.html.slim within layouts/application
+  Rendered blogs/_post_head.html.slim (3.2ms)
+  Rendered blogs/index.html.slim within layouts/application (16.3ms)
+  Rendered layouts/_footer.html.slim (7.1ms)
+Completed 200 OK in 155ms (Views: 146.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/posts" for ::1 at 2016-12-22 20:54:33 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.slim within layouts/application (26.3ms)
+  Rendered layouts/_footer.html.slim (4.8ms)
+Completed 200 OK in 129ms (Views: 123.0ms | ActiveRecord: 1.4ms)
+
+
+[15193] - Gracefully shutting down workers...
+[15193] === puma shutdown: 2016-12-22 20:56:23 +0800 ===
+[15193] - Goodbye!
+Exiting
+=== puma startup: 2016-12-22 20:59:02 +0800 ===
+[15489] - Worker 0 (pid: 15529) booted, phase: 0
+[15489] - Gracefully shutting down workers...
+[15489] === puma shutdown: 2016-12-22 21:00:16 +0800 ===
+[15489] - Goodbye!
+Exiting

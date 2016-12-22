@@ -10,6 +10,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def new
+    Rails.logger.info("==========admin new")
     @post = Post.new
   end
   def srj_convert
@@ -45,7 +46,8 @@ class Admin::PostsController < ApplicationController
       #redirect_to @post
       redirect_to admin_posts_path
     else
-      render 'new'
+      #render 'new'
+      redirect_to admin_posts_path
     end
   end
 
