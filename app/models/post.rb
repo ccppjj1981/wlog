@@ -34,10 +34,12 @@ class Post < ApplicationRecord
   end
   def self.render_html(content)
    #rd = CodeHTML.new
+   #code 转化为html
    code = hcode content
    rd = HTMLwithCodeRay.new
    md = Redcarpet::Markdown.new(rd, autolink: true, fenced_code_blocks: true)
    content = md.render(content)
+   #代码部分html替换到Markdown
    content = replace_code(content,code)  unless code.nil?
    content.html_safe
   end

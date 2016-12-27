@@ -3,7 +3,6 @@ class LikesController < ApplicationController
 
   def index
     post = Post.find( params[:blog_id] )
-    Rails.debug.info("post.liked_count====#{post.liked_count}")
     render :json=> { success: true, count: post.liked_count }
   end
 

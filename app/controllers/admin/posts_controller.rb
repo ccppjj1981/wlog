@@ -10,7 +10,6 @@ class Admin::PostsController < ApplicationController
   end
 
   def new
-    Rails.logger.info("==========admin new")
     @post = Post.new
   end
   def srj_convert
@@ -32,7 +31,6 @@ class Admin::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    Rails.logger.info("update=============#{params[:text]}")
     if @post.update(article_params)
       redirect_to @post
     else
